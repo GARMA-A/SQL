@@ -11,6 +11,7 @@ CREATE TABLE table_name (
     column2 datatype,
     column3 datatype,
 );
+
 CREATE INDEX index_name ON table_name (column_name); /*for performance */
 CREATE VIEW view_name 
 CREATE TRIGGER trigger_name
@@ -90,6 +91,7 @@ SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL isolation_level; /*se
 ## RESOURSES
 ### COURSES
 [SQL Full Course for Beginners 30h youtube](https://youtu.be/SSKVgrwhzus)
+[Original REPO](https://github.com/DataWithBaraa/sql-ultimate-course)
 
 
 

@@ -11,15 +11,10 @@ GROUP BY country
 HAVING AVG(revenue) > 50
 ORDER BY user_count DESC
 LIMIT 5 OFFSET 0;
-
 ```
 
 ```sql
-/*
-SELECT is used to select the columns and print them from the table.
-FROM is used to specify the table from which to select the columns.
-WHERE is used to filter the rows based on a condition.
-*/
+/* SELECT is like print where it copy rows from tables and give them to you back*/
 SELECT * 
 FROM table_name; /*select all columns from the table */
 
@@ -27,42 +22,22 @@ SELECT customer_id,
     first_name, 
     last_name 
 FROM customers; /*select specific columns from the table */
-
 /*
 WHERE is used to filter the rows based on a condition.
-For example, to select all customers with a last name of 'Smith':
 */
+
+/*select all customers with last name Smith and first name 
+starting with John or first name is Jane, foo, or bar */
 SELECT * 
 FROM customers 
-WHERE last_name = 'Smith'; 
--- also can use LIKE for pattern matching
-SELECT *
-FROM customers 
-WHERE last_name LIKE 'Smi%'; 
-/*select all customers with a last name starting with 'Smi' */
-
--- you can use AND, OR, and NOT to combine conditions and >,<,>=,<=, !=,=
-SELECT *
-FROM customers 
 WHERE last_name = 'Smith'
-AND first_name = 'John';
-
-SELECT *
-FROM customers 
-WHERE last_name != 'Smith';
-
-
--- you can use IN to specify a list of values
-SELECT *
-FROM customers 
-WHERE last_name IN ('Smith', 'Johnson', 'Williams');
+AND first_name LIKE 'John%'
+OR first_name IN ('jane' , 'foo' , 'bar'); 
 
 -- you can use BETWEEN to specify a range of values
 SELECT *
 FROM customers 
-WHERE age BETWEEN 18 AND 30; /*select all customers with an age between 18 and 30 */
-
--- there is also GROUPBY, HAVING, ORDER BY, and LIMIT
+WHERE age BETWEEN 18 AND 30; 
 
 -- you can use LIMIT to limit the number of rows returned
 SELECT *
@@ -75,23 +50,20 @@ FROM customers
 GROUP BY last_name
 HAVING COUNT(*) > 1; /*select last names that appear more than once */
 
-
 -- you can use ORDER BY to sort the results
 SELECT *
 FROM customers
 ORDER BY last_name ASC, first_name DESC; 
-/*sort by last name ascending and first name descending */
 
+/*sort by last name ascending and first name descending */
 -- you can use GROUP BY to group the results by a column
 SELECT last_name, COUNT(*) AS count
 FROM customers
 GROUP BY last_name;
 
--- Selecting with aggregate functions
-SELECT gender,SUM(age)
-FROM students
-GROUP BY gender;
-
-
-
 ```
+
+![ORDER_OR_CODE_VS_EXCUTION](SELECT_KEYWORDS.png)
+
+
+
