@@ -94,5 +94,47 @@ SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL isolation_level; /*se
 [Original REPO](https://github.com/DataWithBaraa/sql-ultimate-course)
 
 
+### MOST USED POSTGRESQL COMMANDS
 
+| Command         | Description                                         |
+|-----------------|----------------------------------------------------|
+| \q              | Quit psql                                          |
+| \l              | List databases                                     |
+| \c dbname       | Connect to a database                              |
+| \dt             | List all tables in current database                |
+| \d table_name   | Show structure/schema of a table                   |
+| \du             | List all users/roles                               |
+| \x              | Toggle expanded output (very useful for wide tables)|
+| \?              | Help on psql commands                              |
+| \h              | Help on SQL commands (e.g. \h SELECT)              |
+| \i filename.sql | Execute SQL from a file                            |
+| \timing         | Toggle query execution time display                |
+| \conninfo       | Show current connection info                       |
+| \password       | Change user password                               |
+| \encoding       | Show or set client encoding                        |
+| \set var value  | Set psql variable                                  |
+| \echo string    | Print string to standard output                    |
+| \g              | Execute query (send to server)                     |
+| \watch 2        | Re-run last query every 2 seconds                  |
+| \i filename.sql | Execute SQL from a file                            |
+| \copy table_name FROM 'filename.csv' CSV HEADER | Import CSV data into a specific table           |
+| \copy table_name TO 'filename.csv' CSV HEADER   | Export table data to CSV file                   |
+
+## Migration Tools
+
+Yes, there are tools that automate database migrations and track their status:
+
+- **Flyway**: Simple, widely used migration tool for SQL files.
+- **Sqitch**: Flexible database change management system.
+- **Liquibase**: Powerful migration tool supporting SQL and XML/JSON/YAML formats.
+- **Alembic**: For Python projects using SQLAlchemy.
+
+These tools automatically apply migrations in order and record which migrations have been run.
+
+```sh
+psql -d your_database -f 001_create_users_table.sql
+psql -d your_database -f 001_create_posts_table.sql
+psql -d your_database -f 002_add_email_to_users_table.sql
+
+```
 

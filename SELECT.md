@@ -34,13 +34,13 @@ starting with John or first name is Jane, foo, or bar */
 SELECT * 
 FROM customers 
 WHERE last_name = 'Smith'
-AND first_name LIKE 'John%'
+AND first_name LIKE 'John%' -- whe have % (anything) and _ (one character) wildcards
 OR first_name IN ('jane' , 'foo' , 'bar'); 
 
 -- you can use BETWEEN to specify a range of values
 SELECT *
 FROM customers 
-WHERE age BETWEEN 18 AND 30; 
+WHERE age BETWEEN 18 AND 30;  -- the range is inclusive, so it includes 18 and 30
 
 -- you can use LIMIT to limit the number of rows returned
 SELECT *
