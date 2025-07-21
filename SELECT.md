@@ -1,16 +1,19 @@
 ## SELECT
 
+
+### the very short summary of SELECT
 ```sql
-SELECT 
+SELECT  -- select columns 
   country,
   COUNT(*) AS user_count,
   AVG(revenue) AS avg_revenue
-FROM filtered_data
-JOIN purchases ON filtered_data.user_id = purchases.user_id
-GROUP BY country
-HAVING AVG(revenue) > 50
-ORDER BY user_count DESC
-LIMIT 5 OFFSET 0;
+FROM filtered_data -- from the filtered_data table
+JOIN purchases ON filtered_data.user_id = purchases.user_id -- join with the purchases table on user_id
+WHERE country IS NOT NULL -- where country is not null (filter before grouping)
+GROUP BY country -- squach the results by country
+HAVING AVG(revenue) > 50 -- filter after grouping 
+ORDER BY user_count DESC -- order the results by user_count in descending order
+LIMIT 5 OFFSET 0; -- limit the results to 5 rows starting from the first row
 ```
 
 ```sql
@@ -63,7 +66,13 @@ GROUP BY last_name;
 
 ```
 
-![ORDER_OR_CODE_VS_EXCUTION](SELECT_KEYWORDS.png)
+
+![SELECT_sketch1](select_sketch1.png)
+
+![SELECT_Sketch2](select_sketch2.png)
+
+[go to docs/02_Query_Data_SELECT for more images like this](./docs/02_Query_Data_SELECT.pdf)
+
 
 
 
