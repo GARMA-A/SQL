@@ -67,9 +67,9 @@ GROUP BY last_name;
 ```
 
 
-![SELECT_sketch1](select_sketch1.png)
+![SELECT_sketch1](./SELECTImages/select_sketch1.png)
 
-![SELECT_Sketch2](select_sketch2.png)
+![SELECT_Sketch2](./SELECTImages/select_sketch2.png)
 
 [go to docs/02_Query_Data_SELECT for more images like this](./docs/02_Query_Data_SELECT.pdf)
 

@@ -1,8 +1,8 @@
 ## JOINS 
 
-![joins1](./joins1.png)
-![JoinsTypes](./joinsTypes.png)
-![JoinsTypes](./JoinsTypes2.png)
+![joins1](./JoinImages/joins1.png)
+![JoinsTypes](./JoinImages/joinsTypes.png)
+![JoinsTypes](./JoinImages/JoinsTypes2.png)
 
 
 
@@ -24,13 +24,13 @@ ON tableA.id = tableB.id --condition to join on
 
 ```
 
-![AntiJoins](./AntiJoin1.png)
+![AntiJoins](./JoinImages/AntiJoin1.png)
 
-![AntiJoins](./antiJoin2.png)
+![AntiJoins](./JoinImages/antiJoin2.png)
 
-![antiJoins](./AntiJoin3.png)
+![antiJoins](./JoinImages/AntiJoin3.png)
 
-![antiJoins](./antiJoin4.png)
+![antiJoins](./JoinImages/antiJoin4.png)
 
 ```sql
 
@@ -46,7 +46,7 @@ WHERE tableB.id IS NULL -- this will filter out the rows
 -- i will use LEFT ANTI JOIN where the left the the customer and the 
 -- right is the orders
 ```
-![](./desicionTreeOnJoins.png)
+![](./JoinImages/desicionTreeOnJoins.png)
 
 
 
