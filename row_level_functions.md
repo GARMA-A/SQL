@@ -82,10 +82,11 @@ SELECT NOW() AS current_datetime; -- returns the current date and time
 SELECT DATE '2023-10-01' AS specific_date; -- returns a specific date
 
 SELECT EXTRACT(YEAR FROM CURRENT_DATE) AS current_year; -- returns the current year
+-- as an Integer
 
-SELECT DATE_PART('month', CURRENT_DATE) AS current_month_part; -- returns the current month using date_part
+SELECT DATE_PART('month', CURRENT_DATE) AS current_month_part; -- returns the current month using date_part -- as an Integer
 
-SELECT DATE_TRUNC('year', CURRENT_DATE) AS start_of_year; -- returns the start of the current year
+SELECT DATE_TRUNC('year', CURRENT_DATE) AS start_of_year; -- returns the start of the current year-- as a date
 
 SELECT DATE '2023-10-01' + INTERVAL '1 day' AS next_day; -- adds 1 day to a specific date
 
@@ -98,6 +99,87 @@ SELECT DATE_TRUNC('MONTH', CURRENT_DATE) + INTERVAL '1 MONTH' - INTERVAL '1 day'
 ![](./DatesImages/dates2.png)
 
 ![](./DatesImages/dates3.png)
+
+![](./DatesImages/datesFunctionsREturnType.png)
+
+![](./DatesImages/dates4.png)
+
+### 🗓️ PostgreSQL Date Formatting with `TO_CHAR()`
+
+#### PostgreSQL provides powerful formatting with the `TO_CHAR()` function to convert `DATE` or `TIMESTAMP` values into nicely formatted strings.
+
+## ✅ Syntax
+```sql
+TO_CHAR(date_value, 'format_pattern')
+
+```
+
+| Pattern   | Example Output   | Description                                  |
+|-----------|------------------|----------------------------------------------|
+| `YYYY`    | `2025`           | 4-digit year                                 |
+| `YY`      | `25`             | Last 2 digits of year                        |
+| `MONTH`   | `JULY     `      | Full month name (uppercase, padded)          |
+| `Month`   | `July     `      | Full month name (capitalized, padded)        |
+| `month`   | `july     `      | Full month name (lowercase, padded)          |
+| `MON`     | `JUL`            | Abbreviated month name (uppercase)           |
+| `Mon`     | `Jul`            | Abbreviated month name (capitalized)         |
+| `mon`     | `jul`            | Abbreviated month name (lowercase)           |
+| `MM`      | `07`             | 2-digit month number                         |
+| `DAY`     | `WEDNESDAY`      | Full weekday name (uppercase, padded)        |
+| `Day`     | `Wednesday`      | Full weekday name (capitalized, padded)      |
+| `day`     | `wednesday`      | Full weekday name (lowercase, padded)        |
+| `DY`      | `WED`            | Abbreviated weekday name (uppercase)         |
+| `Dy`      | `Wed`            | Abbreviated weekday name (capitalized)       |
+| `dy`      | `wed`            | Abbreviated weekday name (lowercase)         |
+| `DDD`     | `204`            | Day of year (001–366)                        |
+| `DD`      | `23`             | Day of month (01–31)                         |
+| `D`       | `4`              | Day of week (1=Sunday, 7=Saturday)           |
+| `W`       | `4`              | Week of month (1–5)                          |
+| `WW`      | `30`             | Week number of year (1–53)                   |
+| `HH`      | `07`             | Hour (1–12)                                  |
+| `HH12`    | `07`             | Hour (1–12), same as `HH`                    |
+| `HH24`    | `19`             | Hour (0–23)                                  |
+| `MI`      | `45`             | Minute (0–59)                                |
+| `SS`      | `30`             | Second (0–59)                                |
+| `MS`      | `123`            | Milliseconds (depending on precision)        |
+| `AM` / `PM` | `AM` / `PM`    | Meridian indicator                           |
+| `am` / `pm` | `am` / `pm`    | Meridian indicator (lowercase)               |
+| `A.M.` / `P.M.` | `A.M.`     | Meridian indicator with dots                 |
+| `TZ`      | `UTC`            | Time zone abbreviation                       |
+
+
+#### FORMAT & CASTING
+
+```sql
+SELECT FORMAT('Hello, %s!', 'Garma'); -- will return 'Hello, Garma!'
+
+SELECT FORMAT('The value of pi is approximately %.2f', PI()); -- will return 'The value of pi is approximately 3.14'
+
+SELECT FORMAT('Today is %s', CURRENT_DATE); -- will return 'Today is 2023-10-01' (or the current date)
+SELECT FORMAT(time_table , 'dd') ;-- will return the day part of the time_table in 'dd' format
+
+
+SELECT *, TO_CHAR(last_update, 'DD') AS day_of_month
+FROM film_actor;
+
+
+SELECT *, TO_CHAR(last_update, 'YYYY') AS year
+FROM film_actor;
+
+
+SELECT *, TO_CHAR(last_update, 'MM') AS year
+FROM film_actor;
+
+SELECT CAST('123' AS INTEGER);  -- returns 123
+
+SELECT CAST('123.45' AS FLOAT);  -- returns 123.45
+
+SELECT CAST('2023-10-01' AS DATE);  -- returns 2023-10-01
+
+SELECT CAST('2023-10-01 12:34:56' AS TIMESTAMP);  -- returns 2023-10-01 12:34:56
+
+
+```
 
 
 
