@@ -106,12 +106,11 @@ SELECT DATE_TRUNC('MONTH', CURRENT_DATE) + INTERVAL '1 MONTH' - INTERVAL '1 day'
 
 ### 🗓️ PostgreSQL Date Formatting with `TO_CHAR()`
 
-#### PostgreSQL provides powerful formatting with the `TO_CHAR()` function to convert `DATE` or `TIMESTAMP` values into nicely formatted strings.
 
-## ✅ Syntax
+#### CASTING
+
 ```sql
 TO_CHAR(date_value, 'format_pattern')
-
 ```
 
 | Pattern   | Example Output   | Description                                  |
@@ -147,28 +146,21 @@ TO_CHAR(date_value, 'format_pattern')
 | `A.M.` / `P.M.` | `A.M.`     | Meridian indicator with dots                 |
 | `TZ`      | `UTC`            | Time zone abbreviation                       |
 
-
-#### FORMAT & CASTING
-
+#### Standard Date For all inputs
 ```sql
-SELECT FORMAT('Hello, %s!', 'Garma'); -- will return 'Hello, Garma!'
 
-SELECT FORMAT('The value of pi is approximately %.2f', PI()); -- will return 'The value of pi is approximately 3.14'
+SELECT TO_CHAR(current_date, 'DD Month YYYY');
+-- Output: 23 July 2025
 
-SELECT FORMAT('Today is %s', CURRENT_DATE); -- will return 'Today is 2023-10-01' (or the current date)
-SELECT FORMAT(time_table , 'dd') ;-- will return the day part of the time_table in 'dd' format
+SELECT TO_CHAR(NOW(), 'YYYY-MM-DD HH24:MI:SS');
+-- Output: 2025-07-23 19:45:30
 
+-- if you want 12 based hour system you can use 
+SELECT TO_CHAR(NOW(), 'YYYY-MM-DD HH12:MI:SS AM');
 
-SELECT *, TO_CHAR(last_update, 'DD') AS day_of_month
-FROM film_actor;
+SELECT TO_DATE('23-07-2025', 'DD-MM-YYYY');  -- ✅ returns: 2025-07-23
 
-
-SELECT *, TO_CHAR(last_update, 'YYYY') AS year
-FROM film_actor;
-
-
-SELECT *, TO_CHAR(last_update, 'MM') AS year
-FROM film_actor;
+SELECT TO_TIMESTAMP('23-07-2025 19:45:30', 'DD-MM-YYYY HH24:MI:SS');  -- ✅ returns: 2025-07-23 19:45:30
 
 SELECT CAST('123' AS INTEGER);  -- returns 123
 
@@ -178,6 +170,38 @@ SELECT CAST('2023-10-01' AS DATE);  -- returns 2023-10-01
 
 SELECT CAST('2023-10-01 12:34:56' AS TIMESTAMP);  -- returns 2023-10-01 12:34:56
 
+```
+
+#### FORMAT
+
+```sql
+SELECT FORMAT('Hello, %s!', 'Garma'); -- will return 'Hello, Garma!'
+
+SELECT FORMAT('The value of pi is approximately %.2f', PI()); -- will return 'The value of pi is approximately 3.14'
+
+SELECT FORMAT('Today is %s', CURRENT_DATE); -- will return 'Today is 2023-10-01' (or the current date)
+SELECT FORMAT(time_table , 'dd') ;-- will return the day part of the time_table in 'dd' format
+
+```
+
+#### Add & SUB Date
+
+```sql
+SELECT CURRENT_DATE + INTERVAL '5 days';
+
+SELECT CURRENT_TIMESTAMP + INTERVAL '3 hours';
+
+SELECT CURRENT_TIMESTAMP + INTERVAL '2 days 4 hours';
+
+SELECT CURRENT_TIMESTAMP - INTERVAL '45 minutes';
+
+-- INTERVAL SYNTAX
+INTERVAL '1 year 2 months 3 days 4 hours 5 minutes 6 seconds'
+
+SELECT DATE '2025-08-10' - DATE '2025-08-01';  -- Result: 9
+
+SELECT TO_CHAR(DATE '2024-08-01' - DATE '2025-08-01' + DATE '2000-01-01', 'YYYY-MM-DD');
+-- Result: 1999-01-01
 
 ```
 
