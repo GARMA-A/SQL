@@ -205,6 +205,14 @@ SELECT TO_CHAR(DATE '2024-08-01' - DATE '2025-08-01' + DATE '2000-01-01', 'YYYY-
 
 ```
 
+#### NULL Functions
+
+```sql
+SELECT COALESCE(name, 'No name') FROM users; 
+-- will return 'No name' if name is NULL
+
+```
+
 
 
 
